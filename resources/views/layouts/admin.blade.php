@@ -12,8 +12,9 @@
         @yield('styles')
     </head>
     <body class="app">
-        <div class="min-h-screen bg-red-100">
-            
+        <div class="min-h-screen bg-green-100">
+            @include('layouts.navigation')
+
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
@@ -23,6 +24,7 @@
                 </header>
             @endif
 
+            <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
