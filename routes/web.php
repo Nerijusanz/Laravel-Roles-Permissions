@@ -15,9 +15,15 @@ Route::get('/home', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    
+    Route::resource('permissions', App\Http\Controllers\Admin\PermissionsController::class);
+
+    Route::resource('roles', App\Http\Controllers\Admin\RolesController::class);
 
     
 });
