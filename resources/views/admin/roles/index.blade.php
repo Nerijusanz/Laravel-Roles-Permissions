@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ trans('cruds.roles.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
         </h2>
     </x-slot>
             
