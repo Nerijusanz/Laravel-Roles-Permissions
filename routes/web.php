@@ -20,6 +20,8 @@ Route::get('/home', function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
     
     Route::resource('permissions', App\Http\Controllers\Admin\PermissionsController::class);
 
