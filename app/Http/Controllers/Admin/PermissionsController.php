@@ -27,7 +27,10 @@ class PermissionsController extends Controller
 
     public function store(StorePermissionRequest $request)
     {
+
         $permission = Permission::create($request->all());
+
+        return redirect()->route('admin.permissions.index');
     }
 
 
