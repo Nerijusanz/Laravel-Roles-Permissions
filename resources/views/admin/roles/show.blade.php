@@ -2,7 +2,7 @@
     
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('global.show') }} {{ __('cruds.roles.title_singular') }}
+            {{ __('global.show') }} {{ __('cruds.role.title_singular') }}
         </h2>
     </x-slot>
 

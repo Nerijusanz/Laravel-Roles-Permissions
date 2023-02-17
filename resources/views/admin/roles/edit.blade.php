@@ -20,6 +20,18 @@
             <x-input-error :messages="$errors->get('title')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="permissions" :value="__('cruds.role.fields.permissions')" />
+
+            <select class="{{ $errors->has('permissions') ? 'is-invalid' : '' }}" name="permissions[]" id="permissions" multiple required>
+                @foreach($permissions as $id => $permissions)
+                    <option value="{{ $id }}" {{ (in_array($id, old('permissions', [])) || $role->permissions->contains($id)) ? 'selected' : '' }}>{{ $permissions }}</option>
+                @endforeach
+            </select>
+
+            <x-input-error :messages="$errors->get('permissions')" class="mt-2" />
+
+        </div>
 
         <div class="flex items-center justify-end mt-4">
 
