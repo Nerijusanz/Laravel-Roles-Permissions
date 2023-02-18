@@ -1,21 +1,51 @@
 <x-admin-layout>
+    
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users') }}
+            {{ __('global.show') }} {{ __('cruds.user.title_singular') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    
+    <a class="" href="{{ route('admin.users.index') }}">
+        {{ __('global.back_to_list') }}
+    </a>
 
-                Users show
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+    <table class="">
+        <tbody>
+            <tr>
+                <th>
+                    {{ __('cruds.user.fields.id') }}
+                </th>
+                <td>
+                    {{ $user->id }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    {{ __('cruds.user.fields.name') }}
+                </th>
+                <td>
+                    {{ $user->name }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    {{ __('cruds.user.fields.email') }}
+                </th>
+                <td>
+                    {{ $user->email }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    {{ __('cruds.user.fields.roles') }}
+                </th>
+                <td>
+                    @foreach($user->roles as $key => $roles)
+                        <span class="">{{ $roles->title }}</span>
+                    @endforeach
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </x-admin-layout>
