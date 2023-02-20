@@ -4,10 +4,12 @@
         {{ __('cruds.role.title_singular') }} {{ __('global.list') }}
         </h2>
     </x-slot>
-            
-    <a class="" href="{{ route('admin.roles.create') }}">
-        {{ __('global.add') }} {{ __('cruds.role.title_singular') }}
-    </a>
+    
+    @can('role_create')
+        <a class="" href="{{ route('admin.roles.create') }}">
+            {{ __('global.add') }} {{ __('cruds.role.title_singular') }}
+        </a>
+    @endcan
     
     <table class="">
         <thead>
@@ -41,23 +43,25 @@
                         @endforeach
                     </td>
                     <td>
-                        
+                        @can('role_show')
                             <a class="" href="{{ route('admin.roles.show', $role->id) }}">
                                 {{ __('global.view') }}
                             </a>
+                        @endcan
                         
-                        
+                        @can('role_edit')
                             <a class="" href="{{ route('admin.roles.edit', $role->id) }}">
                                 {{ __('global.edit') }}
                             </a>
+                        @endcan
                         
-                        
+                        @can('role_delete')
                             <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ __("global.areYouSure") }}');" style="display: inline-block;">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="submit" class="" value="{{ __('global.delete') }}">
                             </form>
-                        
+                        @endcan
                     </td>
                 </tr>
             @endforeach
