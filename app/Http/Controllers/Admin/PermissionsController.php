@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MassDestroyPermissionRequest;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Models\Permission;
@@ -71,5 +72,14 @@ class PermissionsController extends Controller
         $permission->delete();
 
         return back();
+    }
+
+
+    public function massDestroy(MassDestroyPermissionRequest $request)
+    {
+        Permission::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }
