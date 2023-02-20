@@ -8,12 +8,15 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
 {
 
     public function index()
     {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
         $users = User::all();
 
@@ -24,6 +27,7 @@ class UsersController extends Controller
 
     public function create()
     {
+        abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all()->pluck('title', 'id');
 
@@ -42,6 +46,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->load('roles');
 
@@ -51,6 +56,7 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
         $roles = Role::all()->pluck('title', 'id');
 
@@ -64,6 +70,7 @@ class UsersController extends Controller
     {
 
         $user->update($request->all());
+
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index');
@@ -73,6 +80,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->delete();
 

@@ -4,10 +4,13 @@
         {{ __('cruds.user.title_singular') }} {{ __('global.list') }}
         </h2>
     </x-slot>
-            
-    <a class="" href="{{ route('admin.users.create') }}">
-        {{ __('global.add') }} {{ __('cruds.user.title_singular') }}
-    </a>
+    
+    @can('user_create')
+        <a class="" href="{{ route('admin.users.create') }}">
+            {{ __('global.add') }} {{ __('cruds.user.title_singular') }}
+        </a>
+    @endcan
+
     
     <table class="">
                 <thead>
@@ -53,19 +56,25 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a class="" href="{{ route('admin.users.show', $user->id) }}">
-                                    {{ __('global.view') }}
-                                </a>
+                                @can('user_show')
+                                    <a class="" href="{{ route('admin.users.show', $user->id) }}">
+                                        {{ __('global.view') }}
+                                    </a>
+                                @endcan
 
-                                <a class="" href="{{ route('admin.users.edit', $user->id) }}">
-                                    {{ __('global.edit') }}
-                                </a>
+                                @can('user_edit')
+                                    <a class="" href="{{ route('admin.users.edit', $user->id) }}">
+                                        {{ __('global.edit') }}
+                                    </a>
+                                @endcan
 
-                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="submit" class="" value="{{ __('global.delete') }}">
-                                </form>
+                                @can('user_delete')
+                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="" value="{{ __('global.delete') }}">
+                                    </form>
+                                @endcan
 
                             </td>
                         </tr>

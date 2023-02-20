@@ -4,11 +4,12 @@
         {{ __('cruds.permission.title_singular') }} {{ __('global.list') }}
         </h2>
     </x-slot>
-            
-    <a class="" href="{{ route('admin.permissions.create') }}">
-        {{ __('global.add') }} {{ __('cruds.permission.title_singular') }}
-    </a>
-    
+
+    @can('permission_create')
+        <a class="" href="{{ route('admin.permissions.create') }}">
+            {{ __('global.add') }} {{ __('cruds.permission.title_singular') }}
+        </a>
+    @endcan
 
     <table class="">
         <thead>
@@ -36,24 +37,25 @@
                     </td>
                     <td>
                         
+                        @can('permission_show')
                             <a class="" href="{{ route('admin.permissions.show', $permission->id) }}">
                                 {{ __('global.view') }}
                             </a>
-                        
+                        @endcan
 
-                        
+                        @can('permission_edit')
                             <a class="" href="{{ route('admin.permissions.edit', $permission->id) }}">
                                 {{ __('global.edit') }}
                             </a>
-                        
+                        @endcan
 
-                        
+                        @can('permission_delete')
                             <form action="{{ route('admin.permissions.destroy', $permission->id) }}" method="POST" onsubmit="return confirm('{{ __("global.areYouSure") }}');" style="display: inline-block;">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="submit" class="" value="{{ __('global.delete') }}">
                             </form>
-                        
+                        @endcan
 
                     </td>
 
