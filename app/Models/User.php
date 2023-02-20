@@ -90,6 +90,12 @@ class User extends Authenticatable
         $this->notify(new ResetPassword($token));
     }
 
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 1)->exists();
+
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
