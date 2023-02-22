@@ -13,3 +13,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
     Route::apiResource('roles', App\Http\Controllers\Api\V1\Admin\RolesApiController::class);
 
 });
+
+Route::post('auth/register', App\Http\Controllers\Api\V1\Auth\RegisterApiController::class);
