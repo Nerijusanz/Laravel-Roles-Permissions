@@ -16,13 +16,13 @@ class RolesApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new RoleResource(Role::with(['permissions'])->get());
     }
 
 
-    public function store(StorePermissionRequest $request)
+    public function store(Request $request)
     {
         $role = Role::create($request->all());
         $role->permissions()->sync($request->input('permissions', []));
@@ -35,13 +35,13 @@ class RolesApiController extends Controller
 
     public function show(Role $role)
     {
-        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new RoleResource($role->load(['permissions']));
     }
 
 
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(Request $request, Role $role)
     {
         $role->update($request->all());
         $role->permissions()->sync($request->input('permissions', []));
@@ -54,7 +54,7 @@ class RolesApiController extends Controller
 
     public function destroy(Role $role)
     {
-        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $role->delete();
 
