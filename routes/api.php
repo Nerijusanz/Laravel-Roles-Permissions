@@ -15,3 +15,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 });
 
 Route::post('auth/register', App\Http\Controllers\Api\V1\Auth\RegisterApiController::class);
+Route::post('auth/login', App\Http\Controllers\Api\V1\Auth\LoginApiController::class);
