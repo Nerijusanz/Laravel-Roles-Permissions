@@ -8,7 +8,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 
     Route::get('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'show'])->name('profile.show');
 
-    Route::put('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'update'])->name('profile.update');
+    Route::post('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'update'])->name('profile.update');
 
     Route::apiResource('users', App\Http\Controllers\Api\V1\Admin\UsersApiController::class);
 
