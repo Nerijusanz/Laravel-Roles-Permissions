@@ -10,8 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PasswordUpdateApiController extends Controller
 {
-    public function __invoke(Request $request)
+    public function update(Request $request)
     {
+
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],
             'password'         => ['required',Password::defaults(),'confirmed'],
