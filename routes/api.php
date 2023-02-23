@@ -10,6 +10,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 
     Route::post('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'update'])->name('profile.update');
 
+    Route::post('password',[App\Http\Controllers\Api\V1\Auth\PasswordUpdateApiController::class,'update'])->name('password.update');
+
     Route::apiResource('users', App\Http\Controllers\Api\V1\Admin\UsersApiController::class);
 
     Route::apiResource('permissions', App\Http\Controllers\Api\V1\Admin\PermissionsApiController::class);
