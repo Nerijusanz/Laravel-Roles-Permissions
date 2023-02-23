@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
 
-    Route::get('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'show'])->name('profile.show');
+    Route::get('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'show']);
 
-    Route::post('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'update'])->name('profile.update');
+    Route::post('profile', [App\Http\Controllers\Api\V1\Auth\ProfileApiController::class, 'update']);
 
-    Route::post('password',[App\Http\Controllers\Api\V1\Auth\PasswordUpdateApiController::class,'update'])->name('password.update');
+    Route::post('password',[App\Http\Controllers\Api\V1\Auth\PasswordUpdateApiController::class,'update']);
 
     Route::apiResource('users', App\Http\Controllers\Api\V1\Admin\UsersApiController::class);
 
