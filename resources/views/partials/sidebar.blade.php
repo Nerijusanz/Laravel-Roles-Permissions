@@ -56,6 +56,14 @@
                 </ul>
             </li>
         @endcan
+        <li class="nav-item">
+            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                <i class="fas fa-fw fa-sign-out-alt nav-icon ">
+
+                </i>
+                {{ __('global.logout') }}
+            </a>
+        </li>
     </ul>
     <button class="sidebar-toggler" type="button"></button>
 </div>
