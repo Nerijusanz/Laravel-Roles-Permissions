@@ -11,7 +11,7 @@
         @yield('styles')
   </head>
   <body>
-    
+    @include('partials.sidebar')
     {{ $slot }}
     
     <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js" integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4" crossorigin="anonymous"></script>
