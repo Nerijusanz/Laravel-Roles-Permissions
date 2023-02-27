@@ -57,4 +57,5 @@
             </li>
         @endcan
     </ul>
+    <button class="sidebar-toggler" type="button"></button>
 </div>
