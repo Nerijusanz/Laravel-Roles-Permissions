@@ -5,10 +5,12 @@
     </div>
 
     <ul class="sidebar-nav" data-coreui="navigation">
-
-        <li class="nav-item"><a class="nav-link" href="index.html">
+        <li class="nav-item">
             <a href="{{ route('admin.home') }}" class="nav-link">
-                {{ __('global.dashboard') }}
+                <i class="fa-fw fas fa-tachometer-alt nav-icon">
+
+                </i>
+                {{ trans('global.dashboard') }}
             </a>
         </li>
 
