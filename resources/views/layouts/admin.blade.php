@@ -59,11 +59,11 @@
                   {{ __('Profile') }}
                 </a>
                 
-                <a class="dropdown-item" href="#">
-                  <svg class="icon me-2">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                  </svg>
-                  {{ __('global.logout') }}
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <svg class="icon me-2">
+                      <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                    </svg>
+                    {{ __('global.logout') }}
                 </a>
               </div>
             </li>
