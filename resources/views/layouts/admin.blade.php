@@ -52,9 +52,9 @@
                   </svg>
               </a>
               <div class="dropdown-menu dropdown-menu-end pt-0">
-                <a class="dropdown-item" href="#">   
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">   
                   <svg class="icon me-2">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                   </svg>
                   {{ __('Profile') }}
                 </a>
